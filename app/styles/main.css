@@ -1,0 +1,407 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    color: #e9e9e5;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #191919;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #222;
+    border-radius: 5px;
+}
+
+body {
+    position: relative;
+    background-color: #1c1c1c;
+}
+
+header {
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #e9e9e5;
+    width: 100%;
+}
+
+header p {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.line {
+    width: 100%;
+    height: 1px;
+    background: #e9e9e5;
+    margin-top: 5px;
+}
+
+.twigel {
+    color: #FF5043;
+}
+
+.green {
+    color: #0dca91;
+}
+
+.blue {
+    color: #388bff;
+}
+
+.warn {
+    color: #ffc93f;
+}
+
+.cmd {
+    font-weight: 600;
+    font-size: 17px;
+    font-family: 'Ubuntu Mono',
+    monospace;
+}
+
+.comment {
+    color: #888;
+}
+
+#logo {
+    cursor: pointer;
+}
+
+/*#welcome .line {*/
+/*	margin-left: -5px;*/
+/*}*/
+
+#page .line {
+    background-color: #444;
+}
+
+main {
+    width: 80%;
+    margin: 0 auto;
+}
+
+#welcome .category {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+}
+
+#welcome .category .category-name {
+    /*width: 25%;*/
+    display: flex;
+    justify-content: space-between;
+}
+
+#welcome .category .category-content {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#welcome .category .category-content .case {
+    width: 250px;
+    height: 100px;
+    border: 1px solid #444;
+    border-radius: 15px;
+    display: flex;
+    margin: 15px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: #222;
+
+    transition: all 0.2s;
+}
+
+#welcome .category .category-content .case:hover {
+    border-color: #FF5043;
+}
+
+#welcome .category .category-content .case .description {
+    display: none;
+    text-align: center;
+    max-width: 90%;
+}
+
+#page {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    margin: 50px auto;
+}
+
+#pageName {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+#page #pageName h1 {
+    text-align: center;
+    width: 60%;
+}
+
+#page #pageName #actual,
+#page #pageName #created {
+    color: #777;
+    position: absolute;
+    bottom: -20px;
+    font-size: 12px;
+}
+
+#page #pageName #actual {
+    left: 0;
+}
+
+#page #pageName #created {
+    right: 0;
+}
+
+#page #pageContent {
+    width: 100%;
+    margin: 50px auto;
+    margin-top: 25px;
+}
+
+#page #pageContent h2 {
+    margin: 25px 0;
+}
+
+#page #pageContent p {
+    margin: 15px 0;
+    line-height: 1.3;
+}
+
+#page #pageContent ul {
+    margin-left: 40px;
+}
+
+#page #pageContent .code {
+    position: relative;
+    width: 100%;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 10px;
+    background-color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+}
+
+#page #pageContent .code span,
+#page #pageContent .code p,
+#page #pageContent .code .file,
+#page #pageContent .code li {
+    width: 90%;
+    margin-top: 0;
+    font-family: 'Ubuntu Mono',
+    monospace;
+    list-style-type: none;
+}
+
+#page #pageContent .code div.file div.text {
+    padding-left: 5%;
+}
+
+#page #pageContent .code div.file div.text-second {
+    padding-left: 10%;
+}
+
+#page #pageContent .code div.file div.text-third {
+    padding-left: 15%;
+}
+
+#page #pageContent .code div.file div.text-fours {
+    padding-left: 20%;
+}
+
+#page #pageContent .code div.file div {
+    line-height: 1.5;
+}
+
+#page #pageContent .code p:last-of-type {
+    margin-bottom: 0;
+}
+
+#page #pageContent .code ul {
+    margin-left: 20px;
+}
+
+#page #pageContent .code p {
+    margin-bottom: 5px;
+}
+
+#page #pageContent .code .copy {
+    position: absolute;
+    right: 20px;
+    color: #777;
+    cursor: pointer;
+    font-family: 'Ubuntu Mono',
+    monospace;
+
+    transition: all 0.2s;
+}
+
+#page #pageContent .code .copied {
+    display: none;
+    position: absolute;
+    right: -70px;
+    color: #FF5043;
+    font-family: 'Ubuntu Mono',
+    monospace;
+}
+
+#page #pageContent .code .copy:hover {
+    color: #FF5043;
+}
+
+#page #pageContent .code .output {
+    color: #555;
+}
+
+#page #pageContent .code .bash {
+    user-select: none;
+}
+
+#page #pageContent .code p .table {
+    display: inline-block;
+    width: 300px;
+}
+
+@media screen and (max-width: 1200px) {
+    #page {
+        width: 80%;
+    }
+
+    #page #pageName h1 {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 568px) {
+    #page {
+        width: 90%;
+    }
+
+    #page #pageName h1 {
+        width: 90%;
+    }
+
+    #page #pageContent .code .copy {
+        display: none;
+    }
+
+}
+
+@media screen and (max-width: 402px) {
+    #page #pageName h1 {
+        width: 100%;
+    }
+}
+
+/*=====================================================================*/
+form {
+    display: flex;
+    flex-direction: column;
+    min-width: 70%;
+    justify-content: center;
+}
+
+main#admin form input, textarea {
+    margin: 15px 0;
+    min-height: 50px;
+    color: #000000;
+}
+
+main#admin form input[type='submit']:hover {
+    cursor: pointer;
+}
+
+main#admin {
+    display: flex;
+    justify-content: center;
+}
+
+.form_article input {
+    color: #000000;
+    min-width: 30%;
+    line-height: 1.5;
+    margin-bottom: 5%;
+}
+
+main#validate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+main#validate .form_article {
+    min-width: 30%;
+    margin: 100px auto;
+}
+
+.form_article input[name='password'] {
+    margin-left: 3%;
+}
+
+.form_article input[name='login'] {
+    margin-left: 2.5%;
+}
+
+.form_article input[type='submit'] {
+    max-width: 12%;
+}
+
+/*===============================Admin================================*/
+.admin_main ul{
+    list-style: none;
+}
+
+.admin_main>li{
+    width: 20%;
+}
+
+.admin_main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 24px;
+    list-style: none;
+}
+
+.admin_main>li:hover .all_actions_user{
+    display: block;
+}
+.all_actions_user li{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.admin_main>li:last-child:hover .all_actions_article {
+    display: block;
+}
+.all_actions_article li{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.all_actions_user, .all_actions_article {
+    display: none;
+    font-size: 16px;
+}
+li:last-child
