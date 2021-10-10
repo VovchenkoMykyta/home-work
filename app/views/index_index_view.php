@@ -9,21 +9,47 @@
             </div>
         </div>
         <div class='category-content'>
-            <?php
-            $c = 0;
-            for ($i = 0; $i < count($this->tasks); $i++) {
-                if($i === $c){
-                    echo "<div class='case' onclick='window.location = \"/sw6/article/" . $this->tasks[$i]['id'] . "\"'>";
-                    foreach ($this->tasks as $key => $task) {
-                        if ($i === $key){
-                            echo "<h3 class='case-name'>" . $task['title'] . "</h3>";
-                            echo "<p class='description'>" . $task['description'] . "</p>";
-                            $c++;
-                        }
-                    }
-                    echo "</div>";
+            <table>
+                <thead>
+                <tr>
+                    <th class="num" title="Место команды">#</th>
+                    <th> Герб</th>
+<!--                    <th class="date" title="Положение команд на 10 октября 2021">-->
+<!--                        Дата-->
+<!--                    </th>-->
+                    <th>Команда</th>
+                    <th class="games" title="Игры">и</th>
+                    <th class="win" title="Выигрыши">в</th>
+                    <th class="draw" title="Ничьи">н</th>
+                    <th class="lose" title="Поражения">п</th>
+                    <th class="goal" title="Забитые голы">заб</th>
+                    <th class="miss" title="Пропущенные голы">про</th>
+                    <th class="diff" title="Разница забитых и пропущенных голов">разн</th>
+                    <th class="score" title="Очки">о</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php
+                foreach ($this->tasks as $task){
+                    $points = (+$task['win_amount'] * 3) + (+$task['draw_amount'] * 1);
+                    $kick = +$task['goals_kicking'];
+                    $miss = +$task['goals_missing'];
+                    $dif = $kick - $miss;
+                    echo "<tr>";
+                    echo "<td>".$task['id']."</td>";
+                    echo "<td><a href='#'>".$task['gerb_path']."</a></td>";
+                    echo "<td><a href='#'>".$task['name']."</a></td>";
+                    echo "<td>".$task['game_amount']."</td>";
+                    echo "<td>".$task['win_amount']."</td>";
+                    echo "<td>".$task['draw_amount']."</td>";
+                    echo "<td>".$task['loss_amount']."</td>";
+                    echo "<td>".$task['goals_kicking']."</td>";
+                    echo "<td>".$task['goals_missing']."</td>";
+                    echo "<td>".$dif."</td>";
+                    echo "<td>".$points."</td>";
                 }
-            }
-            ?>
+                ?>
+                </tbody>
+            </table>
     </div>
 </main>
