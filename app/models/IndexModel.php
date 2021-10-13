@@ -17,30 +17,28 @@ class IndexModel
         $this->db = new \mysqli(DB_HOST, DB_USER, DB_USER, DB_NAME);
     }
 
-    public function allGames()
+    public function allTeams()
     {
         $sql = 'select * from Team order by id';
         $result = $this->db->query($sql);
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-//    public function getOneArticle($id)
-//    {
-//        $sql = "select Article.main_text from Article where id='$id'";
-//        $result = $this->db->query($sql);
-//        return $result->fetch_all(MYSQLI_ASSOC);
-//    }
-//
-//    public function getAuthor($name)
-//    {
-//        $sql = "select id, password, role from Author where name like '$name'";
-//        $result = $this->db->query($sql);
-//        return $result->fetch_all(MYSQLI_ASSOC);
-//    }
-//
-//    public function addArticle($authorId, $categoryId, $title, $description, $mainText, $date){
-//        $sql = "INSERT INTO `Article` (`author_id`, `category_id`, `title`, `description`, `main_text`, `creation_date`)
-//VALUES ('$authorId', '$categoryId', '$title', '$description', '$mainText', '$date');";
-//        $this->db->query($sql);
-//    }
+    public function getOneCommand($name)
+    {
+        $sql = "select * from Team where name like '$name'";
+        $result = $this->db->query($sql);
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+    public function insertTeam($command, $game, $win, $draw, $loss, $kicking_goals, $loss_goals, $city, $stadium, $coach, $players){
+        $sql = "INSERT INTO `Team` (`id`,`name`, `gerb_path`, `city`, `stadium`, `coach`, `game_amount`, `win_amount`, `loss_amount`, `draw_amount`, `goals_kicking`, `goals_missing`, `players_in_team`)
+VALUES (NULL ,'$command', NULL , '$city', '$stadium', '$coach', '$game', '$win', '$loss', '$draw', '$kicking_goals', '$loss_goals' , '$players' );";
+        return $this->db->query($sql);
+    }
+
+    public function getPlayers(){
+        $sql = "SELECT * FROM `Player` order by id";
+        $result = $this->db->query($sql);
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }

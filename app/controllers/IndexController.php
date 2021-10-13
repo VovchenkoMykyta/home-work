@@ -11,7 +11,7 @@ class IndexController
     public function index()
     {
         $model = new IndexModel();
-        $all = $model->allGames();
+        $all = $model->allTeams();
         $view = new View();
         $view->tasks = $all;
         $view->render('index_index_view.php', 'default_view.php');
@@ -23,19 +23,34 @@ class IndexController
         $view->render('admin_index_view.php', 'default_view.php');
     }
 
-    public function check(){
+    public function commandview(){
+        $path = Route::getURIComponents();
+        $name = explode('=',$path[count($path) - 1]);
+        $name = ucfirst($name[count($name) - 1]);
+        $model = new IndexModel();
+        $team = $model->getOneCommand($name);
+        $players = $model->getPlayers();
+        $page = [
+            'table_leader' => 'index_leader.php',
+            'table_stat' => 'index_stat.php',
+        ];
+        $allTeams = $model->allTeams();
+        $team[1] = $page;
+        $team[2] = $allTeams;
+        $team[3] = $players;
         $view = new View();
-        $view->render('validate_view.php', 'default_view.php');
+        $view->tasks = $team;
+        $view->render('article_view.php', 'default_view.php');
     }
 
-    public function validate(){
+    public function addnote(){
         $data = filter_input_array(0);
+        $players = explode(',', $data['players']);
+        $players = json_encode($players);
         $model = new IndexModel();
-        $author = $model->getAuthor($data['login']);
-        if ($author[0]['role'] === 'root' && $author[0]['password'] === $data['password']){
-            Route::redirect('index', 'showadmin');
-        }else{
-            Route::redirect();
+        $ans = $model->insertTeam($data['command'], +$data['game'], +$data['win'], +$data['draw'], +$data['loss'], +$data['kicking_goals'], +$data['loss_goals'], $data['city'], $data['stadium'], $data['coach'], $players);
+        if ($ans){
+            Route::redirect('index', 'index');
         }
     }
 }

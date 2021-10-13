@@ -14,11 +14,6 @@
 
 <body>
 
-<header>
-    <img src="/img/logo.svg" alt="logo" height="50">
-    <p>Developer Documentation</p>
-</header>
-
 
 <?php
 include_once 'app' . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . $pageView;
